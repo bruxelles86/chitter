@@ -1,6 +1,5 @@
 Chitter
 =======
-
 Makers Academy Week 4 Challenge to write a little Twitter clone that will allow the users to post messages to a public stream.
 
 Features
@@ -14,9 +13,8 @@ Features
 Bonus
 -----
 If you have time you can implement the following:
-In order to start a conversation as a maker I want to reply to a peep from another maker.
-And/Or:
-Work on the css to make it look good (we all like beautiful things).
+* In order to start a conversation as a maker I want to reply to a peep from another maker.
+* Work on the css to make it look good (we all like beautiful things).
 
 Domain Model
 ------------
@@ -28,12 +26,23 @@ Classes:
 ###User
 | Responsibiities | Collaborators |
 |-----------------|---------------|
-| Make posts | Post |
+| Have a unique username | Post |
+| Make posts (have n posts) | Email |
 | View posts |  |
 | Reply to posts |  |
 | Log in |  |
 | Log out |  |
+| Reset password |  |
 
 ###Post
+| Responsibiities | Collaborators |
+|-----------------|---------------|
+| Contain text |  |
+| Have a submission time/timestamp |  |
+| Be submitted by a user (belong to a user) |  |
 
-###Email Message
+###Email
+| Responsibiities | Collaborators |
+|-----------------|---------------|
+| Email users with account confirmation | User |
+| Email users with password reset | User |
