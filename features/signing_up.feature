@@ -15,8 +15,8 @@ Feature: Signing up for Chitter
     And I enter an email "bill@badger.com"
     And I enter a first name "Bill"
     And I enter a last name "Badger"
-    And I enter a password "Test"
-    And I enter a password confirmation "Test"
+    And I enter a password "Badgers"
+    And I enter a password confirmation "Badgers"
     And I click the button "Register"
     Then I should see "Welcome to Chitter Bill"
 
@@ -30,4 +30,4 @@ Feature: Signing up for Chitter
     And I enter a password "Test"
     And I enter a password confirmation "Wrong"
     And I click the button "Register"
-    Then I should see "Please check your password and try again"
+    Then I should see "Password does not match the confirmation"

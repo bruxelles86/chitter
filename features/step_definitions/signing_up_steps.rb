@@ -11,27 +11,27 @@ Given(/^I click "(.*?)"$/) do |link_text|
 end
 
 Given(/^I enter a username "(.*?)"$/) do |username|
-  fill_in 'username', :with => "billbadger"
+  fill_in 'username', :with => username
 end
 
 Given(/^I enter an email "(.*?)"$/) do |email|
-  fill_in 'email', :with => "bill@badger.com"
+  fill_in 'email', :with => email
 end
 
 Given(/^I enter a first name "(.*?)"$/) do |name|
-  fill_in 'first_name', :with => "Bill"
+  fill_in 'first_name', :with => name
 end
 
 Given(/^I enter a last name "(.*?)"$/) do |name|
-  fill_in 'last_name', :with => "Badger"
+  fill_in 'last_name', :with => name
 end
 
 Given(/^I enter a password "(.*?)"$/) do |password|
-  fill_in 'password', :with => "Test"
+  fill_in 'password', :with => password
 end
 
 Given(/^I enter a password confirmation "(.*?)"$/) do |password|
-  fill_in 'password_confirmation', :with => "Test"
+  fill_in 'password_confirmation', :with => password
 end
 
 Given(/^I click the button "(.*?)"$/) do |button_text|

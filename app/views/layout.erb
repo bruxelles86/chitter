@@ -7,6 +7,12 @@
   </title>
 </head>
 <body>
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+  <% if flash[:errors] %>
+    <%= flash[:errors] %>
+  <% end %>
   <%= yield %>
 </body>
 </html>

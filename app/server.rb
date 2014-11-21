@@ -1,23 +1,48 @@
 require 'sinatra/base'
+require 'data_mapper'
+require 'rack-flash'
+
+require './lib/user'
+require_relative 'database'
 
 class Chitter < Sinatra::Base
+
+  enable :sessions
+  set :session_secret, 'super secret'
+
+
+  use Rack::Flash
 
   get '/' do
     erb :index
   end
 
   get '/users/new' do
+    @user = User.new
     erb :"users/new"
   end
 
   post '/users/create' do
-    params[:username]
-    params[:email]
-    params[:first_name]
-    params[:last_name]
-    # params[:passord]
-    # params[:password_confirmation]
-    erb :"users/create"
+    @user = User.new(username: params[:username],
+                     email: params[:email],
+                     first_name: params[:first_name],
+                     last_name: params[:last_name],
+                     password: params[:password],
+                     password_confirmation: params[:password_confirmation])
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:notice] = "Welcome to Chitter #{current_user.first_name}"
+      redirect('/')
+    else
+      flash[:errors] = @user.errors.full_messages
+      erb :"users/new"
+    end
+  end
+
+  helpers do
+    def current_user
+      @current_user ||=User.get(session[:user_id]) if session[:user_id]
+    end
   end
 
 end
