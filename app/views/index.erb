@@ -1,28 +1,22 @@
 <% if current_user %>
-  <h2>
-    Welcome to Chitter <%= current_user.first_name %>
-  </h2>
   <form action="/peep" method="post" id="post-compose">
     <input type="text" maxlength="140" name="post_text">
     <input type="submit" value="Peep" name="Peep">
   </form>
-<% else %>
-  <h2>Welcome to Chitter</h2>
 <% end %>
 <% if @posts %>
-  <h2>
+  <h2 class="peep-header">
     Recent Peeps
   </h2>
   <% @posts.each do |post| %>
-    <article>
+    <article class="peep">
+      <aside class="author-details">
+        <% @author = User.first(id: post.user_id) %>
+        <%= @author.username  %> at <%= post.time.strftime "%H:%M"  %>
+      </aside>
       <p>
         <%= post.text %>
       </p>
-      <aside class="author-details">
-        <% @author = User.first(id: post.user_id) %>
-        Posted by <%= @author.username  %><br />
-        at <%= post.time.strftime "%H:%M"  %> on <%= post.time.strftime "%d-%m-%Y"  %>
-      </aside>
     </article>
   <% end %>
 <% end %>

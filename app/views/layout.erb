@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
   <link rel="stylesheet" type="text/css" href="/css/application.css">
   <title>
     Chitter
@@ -28,12 +29,27 @@
         <% end %>
       </nav>
   </header>
-  <% if flash[:notice] %>
-    <%= flash[:notice] %>
-  <% end %>
-  <% if flash[:errors] %>
-    <%= flash[:errors] %>
-  <% end %>
-  <%= yield %>
+  <section id="main-content">
+    <% if current_user %>
+    <h2 id="welcome-message">
+      Welcome to Chitter <%= current_user.first_name %>
+    </h2>
+    <% else %>
+    <h2 id="welcome-message">
+      Welcome to Chitter
+    </h2>
+    <% end %>
+    <% if flash[:notice] %>
+      <section class="flash">
+      <%= flash[:notice] %>
+      </section>
+    <% end %>
+    <% if flash[:errors] %>
+      <section class="flash">
+        <%= flash[:errors] %>
+      </section>
+    <% end %>
+      <%= yield %>
+  </section>
 </body>
 </html>

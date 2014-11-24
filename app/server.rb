@@ -14,6 +14,8 @@ class Chitter < Sinatra::Base
   use Rack::MethodOverride
   use Rack::Flash
 
+  set :public, Proc.new { File.join(root, "..", "public") }
+
   get '/' do
     @posts = Post.all
     erb :index
