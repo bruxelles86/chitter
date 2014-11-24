@@ -8,6 +8,7 @@ require 'data_mapper'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
 require 'rspec'
+require 'timecop'
 
 DatabaseCleaner.strategy = :transaction
 
