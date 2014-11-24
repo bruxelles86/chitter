@@ -11,12 +11,14 @@ class User
   validates_uniqueness_of     :username
   validates_confirmation_of   :password
 
-  property :id,               Serial
-  property :username,         String, :unique => true, :message => "This username is taken"
-  property :email,            String, :unique => true, :message => "This email is in use"
-  property :first_name,       String
-  property :last_name,        String
-  property :password_digest,  Text
+  property :id,                 Serial
+  property :username,           String, :unique => true, :message => "This username is taken"
+  property :email,              String, :unique => true, :message => "This email is in use"
+  property :first_name,         String
+  property :last_name,          String
+  property :password_digest,    Text
+  property :password_token,     Text
+  property :password_timestamp, Time
 
   def password=(password)
     @password = password
@@ -30,6 +32,14 @@ class User
     else
       nil
     end
+  end
+
+  def generate_token
+    (1..12).map{('a'..'z').to_a.sample}.join
+  end
+
+  def generate_timestamp
+    Time.now
   end
 
 end

@@ -3,6 +3,7 @@ require 'data_mapper'
 require 'rack-flash'
 
 require './lib/user'
+require './lib/email'
 require_relative 'database'
 
 class Chitter < Sinatra::Base
@@ -39,6 +40,34 @@ class Chitter < Sinatra::Base
     end
   end
 
+  get '/users/password/reset' do
+    erb :"users/password/reset"
+  end
+
+  post '/users/password/reset' do
+    username = params[:username]
+    user = User.first(username: username)
+    email = user.email
+    token = user.generate_token
+    timestamp = user.generate_timestamp
+    user.update(password_token: token, password_timestamp: timestamp)
+    Email.password_reset(email, token)
+    flash[:notice] = "Thanks! Please check your email for more instructions"
+    redirect('/')
+  end
+
+  get '/users/password/reset/:token' do
+    token = params[:token]
+    @user = User.first(password_token: token)
+    if time_is_under_one_hour
+      @user.update(password_token: nil, password_timestamp: nil)
+      erb :"users/password/new"
+    else
+      flash[:errors] = "Sorry, your code is out of date, please try again"
+      redirect to('/users/password/reset')
+    end
+  end
+
   post '/sessions' do
     username = params[:username]
     password = params[:password]
@@ -59,6 +88,10 @@ class Chitter < Sinatra::Base
   helpers do
     def current_user
       @current_user ||=User.get(session[:user_id]) if session[:user_id]
+    end
+
+    def time_is_under_one_hour
+      (Time.now.to_i - @user.password_timestamp.to_i) < 3600
     end
   end
 
