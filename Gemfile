@@ -7,6 +7,7 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'pg'
 gem 'rack-flash3'
+gem 'rest-client'
 gem 'sinatra'
 gem 'sinatra-partial'
 
@@ -14,4 +15,5 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'rspec'
+  gem 'timecop'
 end
