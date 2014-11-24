@@ -19,9 +19,14 @@ class Chitter < Sinatra::Base
   end
 
   post '/peep' do
-    params[:peep_text]
-    flash[:notice] = "Nice one!" if params[:peep_text]
-    redirect('/')
+    post = Post.create(user: current_user, text: params[:post_text])
+    if post
+      flash[:notice] = "Nice one!"
+      redirect('/')
+    else
+      flash[:error] = "Sorry, there seems to have been some sort of problem..."
+      redirect('/')
+    end
   end
 
   get '/users/new' do

@@ -20,6 +20,8 @@ class User
   property :password_token,     Text
   property :password_timestamp, Time
 
+  has n, :posts, :through => Resource
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
