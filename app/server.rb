@@ -15,11 +15,13 @@ class Chitter < Sinatra::Base
   use Rack::Flash
 
   get '/' do
+    @posts = Post.all
     erb :index
   end
 
   post '/peep' do
-    post = Post.create(user: current_user, text: params[:post_text])
+    time = Time.now
+    post = Post.create(user: current_user, text: params[:post_text], time: time)
     if post
       flash[:notice] = "Nice one!"
       redirect('/')

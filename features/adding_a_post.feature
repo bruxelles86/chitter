@@ -6,6 +6,6 @@ Feature: Posting to Chitter
   Scenario: Making a new post
     Given I have registered
     And I am on the homepage
-    And I fill in the box "peep_text"
+    And I fill in the box "post_text"
     And I click the button "Peep"
     Then I should see "Nice one!"
