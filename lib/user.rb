@@ -12,8 +12,8 @@ class User
   validates_confirmation_of   :password
 
   property :id,               Serial
-  property :username,         String
-  property :email,            String
+  property :username,         String, :unique => true, :message => "This username is taken"
+  property :email,            String, :unique => true, :message => "This email is in use"
   property :first_name,       String
   property :last_name,        String
   property :password_digest,  Text
@@ -23,8 +23,8 @@ class User
     self.password_digest = BCrypt::Password.create(password)
   end
 
-  def self.authenticate(email, password)
-    user = first(:email => email)
+  def self.authenticate(username, password)
+    user = first(:username => username)
     if user && BCrypt::Password.new(user.password_digest) == password
       user
     else

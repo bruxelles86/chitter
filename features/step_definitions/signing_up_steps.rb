@@ -6,7 +6,7 @@ Then(/^I should see "(.*?)"$/) do |message_text|
   expect(page).to have_content(message_text)
 end
 
-Given(/^I click "(.*?)"$/) do |link_text|
+Given(/^I click the link "(.*?)"$/) do |link_text|
   click_link(link_text)
 end
 

@@ -7,6 +7,21 @@
   </title>
 </head>
 <body>
+  <header>
+    <h1 id="site-name">
+      Chitter
+    </h1>
+    <% unless current_user %>
+      <nav id="user-menu">
+        <a href="/users/new">
+          Sign up
+        </a>
+        <a href="/sessions/new">
+          Sign in
+        </a>
+      </nav>
+    <% end %>
+  </header>
   <% if flash[:notice] %>
     <%= flash[:notice] %>
   <% end %>

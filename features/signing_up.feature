@@ -1,6 +1,6 @@
 Feature: Signing up for Chitter
   In order to post messages on Chitter
-  As a registered user
+  As a new user
   I must be able to register
 
   Scenario: Visiting the site for the first time
@@ -10,7 +10,7 @@ Feature: Signing up for Chitter
 
   Scenario: Signing up to the site with passwords that match
     Given I am on the homepage
-    And I click "Sign up"
+    And I click the link "Sign up"
     And I enter a username "billbadger"
     And I enter an email "bill@badger.com"
     And I enter a first name "Bill"
@@ -22,7 +22,7 @@ Feature: Signing up for Chitter
 
   Scenario: Signing up to the site with passwords that don't match
     Given I am on the homepage
-    And I click "Sign up"
+    And I click the link "Sign up"
     And I enter a username "billbadger"
     And I enter an email "bill@badger.com"
     And I enter a first name "Bill"
