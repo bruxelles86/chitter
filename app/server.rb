@@ -11,7 +11,7 @@ class Chitter < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
 
-
+  use Rack::MethodOverride
   use Rack::Flash
 
   get '/' do
@@ -83,6 +83,12 @@ class Chitter < Sinatra::Base
 
   get '/sessions/new' do
     erb :"sessions/new"
+  end
+
+  delete '/sessions' do
+    session.clear
+    flash[:notice] = "Good bye! See you again soon"
+    redirect to('/')
   end
 
   helpers do

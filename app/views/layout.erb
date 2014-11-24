@@ -11,16 +11,22 @@
     <h1 id="site-name">
       Chitter
     </h1>
-    <% unless current_user %>
       <nav id="user-menu">
-        <a href="/users/new">
-          Sign up
-        </a>
-        <a href="/sessions/new">
-          Sign in
-        </a>
+        <% unless current_user %>
+          <a href="/users/new" class="button">
+            Sign up
+          </a>
+          <a href="/sessions/new" class="button">
+            Sign in
+          </a>
+        <% end %>
+        <% if current_user %>
+          <form method="post" action="/sessions">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" value="Sign out">
+          </form>
+        <% end %>
       </nav>
-    <% end %>
   </header>
   <% if flash[:notice] %>
     <%= flash[:notice] %>
