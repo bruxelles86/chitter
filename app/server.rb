@@ -18,6 +18,12 @@ class Chitter < Sinatra::Base
     erb :index
   end
 
+  post '/peep' do
+    params[:peep_text]
+    flash[:notice] = "Nice one!" if params[:peep_text]
+    redirect('/')
+  end
+
   get '/users/new' do
     @user = User.new
     erb :"users/new"

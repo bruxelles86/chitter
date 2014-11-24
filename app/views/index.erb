@@ -1,5 +1,9 @@
 <% if current_user %>
   <h2>Welcome to Chitter <%= current_user.first_name %></h2>
+  <form action="/peep" method="post" id="peep-compose">
+    <input type="text" maxlength="140" name="peep_text">
+    <input type="submit" value="Peep" name="Peep">
+  </form>
 <% else %>
   <h2>Welcome to Chitter</h2>
 <% end %>
