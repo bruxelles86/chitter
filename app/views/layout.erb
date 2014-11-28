@@ -10,46 +10,17 @@
 <body>
   <header>
     <h1 id="site-name">
-      Chitter
+      <a href="/" title="Chitter Home">
+        Chitter
+      </a>
     </h1>
-      <nav id="user-menu">
-        <% unless current_user %>
-          <a href="/users/new" class="button">
-            Sign up
-          </a>
-          <a href="/sessions/new" class="button">
-            Sign in
-          </a>
-        <% end %>
-        <% if current_user %>
-          <form method="post" action="/sessions">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="Sign out">
-          </form>
-        <% end %>
-      </nav>
+    <%= partial :usermenu %>
   </header>
   <section id="main-content">
-    <% if current_user %>
-    <h2 id="welcome-message">
-      Welcome to Chitter <%= current_user.first_name %>
-    </h2>
-    <% else %>
-    <h2 id="welcome-message">
-      Welcome to Chitter
-    </h2>
-    <% end %>
-    <% if flash[:notice] %>
-      <section class="flash">
-      <%= flash[:notice] %>
-      </section>
-    <% end %>
-    <% if flash[:errors] %>
-      <section class="flash">
-        <%= flash[:errors] %>
-      </section>
-    <% end %>
-      <%= yield %>
+    <%= partial :welcome %>
+    <%= partial :flash %>
+    <%= yield %>
+    <%= partial :footer %>
   </section>
 </body>
 </html>

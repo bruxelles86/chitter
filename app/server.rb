@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'sinatra/partial'
 require 'data_mapper'
 require 'rack-flash'
 
@@ -10,11 +11,11 @@ class Chitter < Sinatra::Base
 
   enable :sessions
   set :session_secret, 'super secret'
-
   use Rack::MethodOverride
   use Rack::Flash
-
-  set :public, Proc.new { File.join(root, "..", "public") }
+  register Sinatra::Partial
+  set :partial_template_engine, :erb
+  set :public_folder, Proc.new { File.join(root, "..", "public") }
 
   get '/' do
     @posts = Post.all

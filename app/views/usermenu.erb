@@ -1,0 +1,16 @@
+<nav id="user-menu">
+  <% unless current_user %>
+    <a href="/users/new" class="button">
+      Sign up
+    </a>
+  <a href="/sessions/new" class="button">
+    Sign in
+  </a>
+  <% end %>
+  <% if current_user %>
+    <form method="post" action="/sessions">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Sign out">
+    </form>
+  <% end %>
+</nav>

@@ -1,0 +1,10 @@
+<% if flash[:notice] %>
+  <section class="flash">
+    <%= flash[:notice] %>
+  </section>
+<% end %>
+<% if flash[:errors] %>
+  <section class="flash">
+    <%= flash[:errors] %>
+  </section>
+<% end %>
