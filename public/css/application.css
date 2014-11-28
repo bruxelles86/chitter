@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  padding: 0 0 20px 0;
+  padding: 0;
   background-color: #6f5499;
 }
 
@@ -14,9 +14,18 @@ header {
 #site-name {
   float: left;
   margin: 0 !important;
-  color: #33224C;
   text-transform: uppercase;
   font-size: 3.5em;
+}
+
+#site-name a {
+  text-decoration: none;
+  color: #33224C;
+  transition: color 2s ease;
+}
+
+#site-name a:hover {
+  color: #6f5499;
 }
 
 #user-menu {
@@ -40,6 +49,7 @@ header {
   color: #FFF;
   text-decoration: none;
   text-transform: uppercase;
+  transition: background-color 2s ease;
 }
 
 .button:hover, input[type="submit"]:hover {
@@ -123,4 +133,17 @@ input[type="text"], input[type="email"], input[type="password"] {
   width: 380px;
   border-radius: 8px;
   border: 2px solid #33224C;
+}
+
+footer {
+  height: 35px;
+  padding: 20px 20px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+footer p {
+  text-align: center;
+  font-weight: bold;
+  color: #33224C;
 }

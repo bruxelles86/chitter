@@ -8,19 +8,12 @@
   </title>
 </head>
 <body>
-  <header>
-    <h1 id="site-name">
-      <a href="/" title="Chitter Home">
-        Chitter
-      </a>
-    </h1>
-    <%= partial :usermenu %>
-  </header>
+  <%= partial :header %>
   <section id="main-content">
     <%= partial :welcome %>
     <%= partial :flash %>
     <%= yield %>
-    <%= partial :footer %>
   </section>
+  <%= partial :footer %>
 </body>
 </html>
