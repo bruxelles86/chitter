@@ -26,20 +26,14 @@ class Chitter < Sinatra::Base
   end
 
   post '/users/password/reset' do
-    username = params[:username]
-    user = User.first(username: username)
-    email = user.email
-    token = user.generate_token
-    timestamp = user.generate_timestamp
-    user.update(password_token: token, password_timestamp: timestamp)
-    Email.password_reset(email, token)
+    user = User.first(username: params[:username])
+    user.reset_password
     flash[:notice] = "Thanks! Please check your email for more instructions"
     redirect('/')
   end
 
   get '/users/password/reset/:token' do
-    token = params[:token]
-    @user = User.first(password_token: token)
+    @user = User.first(password_token: params[:token])
     if time_is_under_one_hour
       @user.update(password_token: nil, password_timestamp: nil)
       erb :"users/password/new"

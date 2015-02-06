@@ -36,6 +36,14 @@ class User
     end
   end
 
+  def reset_password
+    email = self.email
+    token = self.generate_token
+    timestamp = self.generate_timestamp
+    self.update(password_token: token, password_timestamp: timestamp)
+    Email.password_reset(email, token)
+  end
+
   def generate_token
     (1..12).map{('a'..'z').to_a.sample}.join
   end
