@@ -1,23 +1,18 @@
 Chitter
 =======
+[![Code Climate](https://codeclimate.com/github/abridger/chitter/badges/gpa.svg)](https://codeclimate.com/github/abridger/chitter) [![Test Coverage](https://codeclimate.com/github/abridger/chitter/badges/coverage.svg)](https://codeclimate.com/github/abridger/chitter)
+
 Makers Academy Week 4 Challenge to write a little Twitter clone that will allow the users to post messages to a public stream.
 
 Features
 --------
-* In order to use chitter as a maker I want to sign up to the service
-* In order to user chitter as a maker I want to log in
-* In order to avoid others to use my account as a maker I want to log out
-* In order to let people know what I am doing as a maker I want to post a message to chitter
-* In order to see what people have to say as a maker I want to see all peeps in chronological order
+* Allows users to sign up for the service and to log in
+* Allows users to log out
+* Allows users to post messages to the public stream
+* Displays all messages in the public stream in reverse chronological order
 
-Bonus
------
-If you have time you can implement the following:
-* In order to start a conversation as a maker I want to reply to a peep from another maker.
-* Work on the css to make it look good (we all like beautiful things).
-
-Technology
-----------
+Technology & Principles
+-----------------------
 * Ruby
 * Sinatra
 * Cucumber
@@ -29,3 +24,7 @@ Installing & Testing
 * Requires postgres databases to be set up: `chitter_development` and `chitter_test`
 * Also requires a Mailgun API key (for forgotten password emails)
 * Tests can be run using `cucumber`
+
+Further Development
+-------------------
+* Allow users to reply to other users so that they can hold conversations
