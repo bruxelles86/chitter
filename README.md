@@ -11,8 +11,8 @@ Features
 * Allows users to post messages to the public stream
 * Displays all messages in the public stream in reverse chronological order
 
-Technology & Principles
------------------------
+Technologies & Principles
+-------------------------
 * Ruby
 * Sinatra
 * Cucumber
