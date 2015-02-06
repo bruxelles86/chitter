@@ -16,33 +16,16 @@ If you have time you can implement the following:
 * In order to start a conversation as a maker I want to reply to a peep from another maker.
 * Work on the css to make it look good (we all like beautiful things).
 
-Domain Model
-------------
-Classes:
-* User
-* Post/'peep'
-* Email Message
+Technology
+----------
+* Ruby
+* Sinatra
+* Cucumber
+* Capybara
 
-###User
-| Responsibiities | Collaborators |
-|-----------------|---------------|
-| Have a unique username | Post |
-| Make posts (have n posts) | Email |
-| View posts |  |
-| Reply to posts |  |
-| Log in |  |
-| Log out |  |
-| Reset password |  |
-
-###Post
-| Responsibiities | Collaborators |
-|-----------------|---------------|
-| Contain text |  |
-| Have a submission time/timestamp |  |
-| Be submitted by a user (belong to a user) |  |
-
-###Email
-| Responsibiities | Collaborators |
-|-----------------|---------------|
-| Email users with account confirmation | User |
-| Email users with password reset | User |
+Installing & Testing
+--------------------
+* After cloning the git repo, run `bundle install`
+* Requires postgres databases to be set up: `chitter_development` and `chitter_test`
+* Also requires a Mailgun API key (for forgotten password emails)
+* Tests can be run using `cucumber`

@@ -1,9 +1,7 @@
-<% if current_user %>
-  <h2 id="welcome-message">
+<h2 id="welcome-message">
+  <% if current_user %>
     Welcome to Chitter <%= current_user.first_name %>
-  </h2>
   <% else %>
-  <h2 id="welcome-message">
     Welcome to Chitter
-  </h2>
-<% end %>
+  <% end %>
+</h2>

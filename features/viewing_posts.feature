@@ -6,5 +6,5 @@ Feature: Viewing Posts
   Scenario: Viewing peeps
     Given I have written a peep with the text "Hello world!"
     And I am on the homepage
-    Then I should see "Recent peeps"
+    Then I should see "Recent Peeps"
     And I should see "Hello world!"
